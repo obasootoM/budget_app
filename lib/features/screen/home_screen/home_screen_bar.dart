@@ -38,7 +38,6 @@ class _HomeScreenBarState extends State<HomeScreenBar> {
   @override
   Widget build(BuildContext context) {
      final userId = FirebaseAuth.instance.currentUser!.uid;
-     final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
       floatingActionButton: FloatingActionButton.small(
         backgroundColor: Colors.blue,
@@ -50,7 +49,7 @@ class _HomeScreenBarState extends State<HomeScreenBar> {
       ),
       appBar: AppBar(
           title:  Text(
-            'Hello, ${user!.email}',
+            'Hello, ',
             style: TextStyle(fontSize: 20),
           ),
           backgroundColor: Colors.blue[700],

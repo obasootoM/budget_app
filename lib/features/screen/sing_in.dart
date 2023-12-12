@@ -1,5 +1,6 @@
 import 'package:budget_app/features/auth/auth_service/auth_service.dart';
 import 'package:budget_app/features/screen/sign_up.dart';
+import 'package:budget_app/features/widget/home_short.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
@@ -34,6 +35,8 @@ class _SignInState extends State<SignIn> {
         'password': passController.text
       };
       authService.login(context, data);
+       Navigator.of(context).push(
+          MaterialPageRoute(builder: (context) => const HomeShort()));
       setState(() {
         isLoading = false;
       });
@@ -47,98 +50,100 @@ class _SignInState extends State<SignIn> {
     final height = MediaQuery.sizeOf(context).height;
     final width = MediaQuery.sizeOf(context).width;
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 126, 122, 122),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
             key: _key,
-            child: Column(
-              children: [
-                const SizedBox(
-                  height: 100,
-                ),
-                const Text(
-                  'Sign in',
-                  style: TextStyle(color: Colors.white, fontSize: 20),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                TextFormField(
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Enter your email';
-                    }
-                    RegExp email = RegExp(r'^[\w-\.] +@([\w-]+\.)+[\w-]{2,4}$');
-                    if (email.hasMatch(value)) {
-                      return 'please return a valid email';
-                    }
-                    return null;
-                  },
-                  style: const TextStyle(color: Colors.white),
-                  controller: emailController,
-                  keyboardType: TextInputType.emailAddress,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: decoration_field('email'),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                TextFormField(
-                  obscureText: obScure,
-                  validator: (value) {
-                    if (value!.isEmpty) {
-                      return 'Enter your password';
-                    }
-                    if (value.length != 10) {
-                      return 'Enter a minimun of 10';
-                    }
-                    return null;
-                  },
-                  style: const TextStyle(color: Colors.white),
-                  controller: passController,
-                  keyboardType: TextInputType.visiblePassword,
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  decoration: decoration_field('password'),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                SizedBox(
-                  height: height * 0.05,
-                  width: width * 1,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      isLoading ? print('isloading') : _submit();
-                    },
-                    child: isLoading
-                        ? const Center(child: CircularProgressIndicator())
-                        : const Text(
-                            'Submit',
-                            style: TextStyle(fontSize: 20),
-                          ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(
+                    height: 100,
                   ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                      text: 'Already hava an account?  ',
-                      style: const TextStyle(fontSize: 20),
-                      children: [
-                        TextSpan(
-                            text: ' Sign up',
-                            style: const TextStyle(color: Colors.blue),
-                            recognizer: TapGestureRecognizer()
-                              ..onTap = () => Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const SignUp())))
-                      ])
-                ]))
-              ],
+                  const Text(
+                    'Sign in',
+                    style: TextStyle(color: Colors.white, fontSize: 20),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter your email';
+                      }
+                      RegExp email = RegExp(r'^[\w-\.] +@([\w-]+\.)+[\w-]{2,4}$');
+                      if (email.hasMatch(value)) {
+                        return 'please return a valid email';
+                      }
+                      return null;
+                    },
+                    style: const TextStyle(color: Colors.white),
+                    controller: emailController,
+                    keyboardType: TextInputType.emailAddress,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: decoration_field('email'),
+                  ),
+                  const SizedBox(
+                    height: 30,
+                  ),
+                  TextFormField(
+                    obscureText: obScure,
+                    validator: (value) {
+                      if (value!.isEmpty) {
+                        return 'Enter your password';
+                      }
+                      if (value.length != 10) {
+                        return 'Enter a minimun of 10';
+                      }
+                      return null;
+                    },
+                    style: const TextStyle(color: Colors.white),
+                    controller: passController,
+                    keyboardType: TextInputType.visiblePassword,
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    decoration: decoration_field('password'),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  SizedBox(
+                    height: height * 0.05,
+                    width: width * 1,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        isLoading ? print('isloading') : _submit();
+                      },
+                      child: isLoading
+                          ? const Center(child: CircularProgressIndicator())
+                          : const Text(
+                              'Submit',
+                              style: TextStyle(fontSize: 20),
+                            ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 15,
+                  ),
+                  RichText(
+                      text: TextSpan(children: [
+                    TextSpan(
+                        text: 'Already hava an account?  ',
+                        style: const TextStyle(fontSize: 20),
+                        children: [
+                          TextSpan(
+                              text: ' Sign up',
+                              style: const TextStyle(color: Colors.blue),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () => Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const SignUp())))
+                        ])
+                  ]))
+                ],
+              ),
             )),
       ),
     );
@@ -148,7 +153,7 @@ class _SignInState extends State<SignIn> {
     return InputDecoration(
         labelText: parameter,
         filled: true,
-        fillColor: Colors.black,
+        fillColor: const Color.fromARGB(255, 126, 122, 122),
         labelStyle: const TextStyle(color: Colors.white),
         border: OutlineInputBorder(
             borderSide: const BorderSide(color: Colors.white),

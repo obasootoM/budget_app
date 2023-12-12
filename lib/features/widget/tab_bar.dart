@@ -14,7 +14,7 @@ class TabBars extends StatelessWidget {
           length: 2,
           child: Column(
             children: [
-              TabBar(
+              const TabBar(
                 tabs: [
                   Tab(
                     text: 'Credit',

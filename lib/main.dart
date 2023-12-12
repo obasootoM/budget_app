@@ -1,4 +1,4 @@
-import 'package:budget_app/features/widget/auth_gate.dart';
+import 'package:budget_app/features/screen/splash/splash.dart';
 import 'package:budget_app/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const AuthGate(),
+      home: const SplashScreen(),
     );
   }
 }

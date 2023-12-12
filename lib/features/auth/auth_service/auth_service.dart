@@ -11,8 +11,8 @@ class AuthService {
         email: data['email'],
         password: data['password'],
       );
-      // await db.addUser(data, context);
-      Navigator.of(context).pushReplacement(
+      await db.addUser(data, context);
+      Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => const HomeScreen()));
     } catch (e) {
       showDialog(
@@ -30,7 +30,7 @@ class AuthService {
     try {
       await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: data['email'], password: data['password']);
-      Navigator.of(context).pushReplacement(
+      Navigator.of(context).push(
           MaterialPageRoute(builder: (context) => const HomeScreen()));
     } catch (e) {
       showDialog(

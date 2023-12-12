@@ -1,7 +1,6 @@
 import 'package:budget_app/utilis/app_icon.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:intl/intl.dart';
 
 class Category extends StatefulWidget {
   const Category({super.key, required this.changed});

@@ -45,7 +45,7 @@ class _SignUpState extends State<SignUp> {
       };
       authService.createService(context, data);
       print('hello');
-      db.addUser(data, context);
+      // db.addUser(data, context);
       print('hello');
       // ScaffoldMessenger.of(context)
       //     .showSnackBar(const SnackBar(content: Text('Signup success')));
@@ -81,7 +81,7 @@ class _SignUpState extends State<SignUp> {
     final width = MediaQuery.sizeOf(context).width;
     final height = MediaQuery.sizeOf(context).height;
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: const Color.fromARGB(255, 126, 122, 122),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: Form(
@@ -205,7 +205,7 @@ class _SignUpState extends State<SignUp> {
 
   InputDecoration parameter(String params) {
     return InputDecoration(
-        fillColor: Colors.black87,
+        fillColor: const Color.fromARGB(255, 126, 122, 122),
         filled: true,
         labelText: params,
         labelStyle: const TextStyle(color: Colors.white),

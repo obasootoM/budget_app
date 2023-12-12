@@ -90,7 +90,6 @@ class _AlertDialogsState extends State<AlertDialogs> {
   void dispose() {
     titleEditingcontroller.dispose();
     amountEditingcontroller.dispose();
-    // TODO: implement dispose
     super.dispose();
   }
 
@@ -151,7 +150,7 @@ class _AlertDialogsState extends State<AlertDialogs> {
                     }
                   },
                   child: isLoading
-                      ? const CircularProgressIndicator()
+                      ? const Center(child:  CircularProgressIndicator())
                       : const Text('Add Transaction'))
             ],
           )),
